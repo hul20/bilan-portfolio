@@ -1,4 +1,4 @@
-# Jullian Bilan - Portfolio (React Version)
+# Jullian Bilan - Portfolio
 
 Welcome to my personal portfolio! This repository showcases my projects, skills, and professional journey, now built with React.js.
 
@@ -23,43 +23,6 @@ This portfolio is built with:
 - 🎯 Smooth scrolling between sections
 - 🌟 Interactive animated background
 - 💫 Hover effects and transitions
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone [your-repo-url]
-cd bilan-portfolio-1
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Start the development server:
-
-```bash
-npm start
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-## Available Scripts
-
-- `npm start` - Runs the app in development mode
-- `npm run build` - Builds the app for production
-- `npm test` - Launches the test runner
-- `npm run eject` - Ejects from Create React App (irreversible)
 
 ## Skills
 
