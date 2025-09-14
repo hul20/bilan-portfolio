@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { useSound } from '../utils/sounds';
+import ThemeSelector from './ThemeSelector';
 
 const Navigation = () => {
+  const { theme, currentTheme } = useTheme();
+  const { playSound } = useSound(currentTheme);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -14,6 +19,7 @@ const Navigation = () => {
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
+    playSound('nav');
     const targetSection = document.getElementById(targetId);
     
     if (targetSection) {
@@ -46,11 +52,9 @@ const Navigation = () => {
       const navbar = document.querySelector('nav');
       if (window.scrollY > 50) {
         navbar.classList.add('shadow-lg');
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
         navbar.style.backdropFilter = 'blur(10px)';
       } else {
         navbar.classList.remove('shadow-lg');
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 1)';
         navbar.style.backdropFilter = 'none';
       }
     };
@@ -73,6 +77,7 @@ const Navigation = () => {
 
   const navItems = [
     { href: '#home', label: 'Home' },
+    { href: '#projects', label: 'Projects' },
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#education', label: 'Education' },
@@ -80,18 +85,18 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav className={`${theme.colors.secondary} shadow-lg fixed w-full top-0 z-50`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-blue-600">hulyan</h1>
+            <h1 className={`text-2xl font-bold ${theme.colors.brand}`}>hulyan</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={`text-gray-700 hover:text-blue-600 transition duration-300 ${
+                className={`${theme.colors.textPrimary} ${theme.colors.hover} transition duration-300 ${
                   activeSection === item.href.substring(1) ? 'active' : ''
                 }`}
                 onClick={(e) => handleNavClick(e, item.href.substring(1))}
@@ -99,11 +104,22 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            <a
+              href="/cv/Jullian_Bilan_CV.pdf"
+              download="Jullian_Bilan_CV.pdf"
+              className={`flex items-center gap-2 px-4 py-2 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-lg font-semibold ${theme.colors.brandHover} transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg`}
+              onClick={() => playSound('success')}
+            >
+              <i className="fas fa-download text-sm"></i>
+              CV
+            </a>
+            <ThemeSelector />
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeSelector />
             <button 
               onClick={toggleMobileMenu}
-              className="text-gray-700 hover:text-blue-600"
+              className={`${theme.colors.textPrimary} ${theme.colors.hover}`}
             >
               <i className="fas fa-bars text-xl"></i>
             </button>
@@ -115,12 +131,21 @@ const Navigation = () => {
             <a
               key={item.href}
               href={item.href}
-              className="block py-2 text-gray-700 hover:text-blue-600 transition duration-300"
+              className={`block py-2 ${theme.colors.textPrimary} ${theme.colors.hover} transition duration-300`}
               onClick={(e) => handleNavClick(e, item.href.substring(1))}
             >
               {item.label}
             </a>
           ))}
+          <a
+            href="/cv/Jullian_Bilan_CV.pdf"
+            download="Jullian_Bilan_CV.pdf"
+            className={`flex items-center gap-2 py-2 ${theme.colors.brand} ${theme.colors.hover} transition duration-300 font-semibold`}
+            onClick={() => playSound('success')}
+          >
+            <i className="fas fa-download text-sm"></i>
+            Download CV
+          </a>
         </div>
       </div>
     </nav>

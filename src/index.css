@@ -1,8 +1,537 @@
 /* Custom CSS Styles */
 
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Ensure font loads properly */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
+}
+
+/* Global font family */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 /* Smooth scrolling for the entire page */
 html {
     scroll-behavior: smooth;
+}
+
+/* Override Tailwind's default fonts with Josefin Sans */
+.font-sans {
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
+p, span, div, a, button {
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
+/* Theme Transition Animations */
+.theme-transition {
+    transition: all 0.5s ease-in-out;
+}
+
+/* 8-bit Theme Styles */
+.retro8bit-theme {
+    font-family: 'Press Start 2P', cursive !important;
+    animation: pixelateIn 1s ease-out;
+}
+
+/* 8-bit Theme Entry Animation */
+@keyframes pixelateIn {
+    0% {
+        filter: blur(10px) contrast(0.5);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    25% {
+        filter: blur(8px) contrast(0.7);
+        transform: scale(0.9);
+        opacity: 0.3;
+    }
+    50% {
+        filter: blur(4px) contrast(0.9);
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
+    75% {
+        filter: blur(2px) contrast(1.1);
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+    100% {
+        filter: blur(0px) contrast(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Pixelated Scanline Effect */
+.retro8bit-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 0%,
+        rgba(34, 197, 94, 0.03) 50%,
+        transparent 100%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 0.1s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes scanlines {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 4px;
+    }
+}
+
+/* Pixelated Screen Flicker */
+.retro8bit-theme::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 197, 94, 0.02);
+    animation: screenFlicker 0.15s infinite alternate;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes screenFlicker {
+    0% {
+        opacity: 1;
+    }
+    98% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0.98;
+    }
+    100% {
+        opacity: 0.95;
+    }
+}
+
+.retro8bit-theme,
+.retro8bit-theme *:not(i):not(.fa):not(.fas):not(.fab):not(.far):not(.fal):not([class*="fa-"]),
+.retro8bit-theme *::before:not(.fa):not(.fas):not(.fab):not(.far):not(.fal),
+.retro8bit-theme *::after:not(.fa):not(.fas):not(.fab):not(.far):not(.fal) {
+    font-family: 'Press Start 2P', cursive !important;
+    image-rendering: pixelated !important;
+    image-rendering: -moz-crisp-edges !important;
+    image-rendering: crisp-edges !important;
+}
+
+/* Force Font Awesome icons to use correct font and weight */
+.retro8bit-theme i[class*="fa-"],
+.retro8bit-theme .fa,
+.retro8bit-theme .fas,
+.retro8bit-theme .fab,
+.retro8bit-theme .far,
+.retro8bit-theme .fal {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+}
+
+/* Ensure Font Awesome icons keep their font */
+.retro8bit-theme i,
+.retro8bit-theme .fa,
+.retro8bit-theme .fas,
+.retro8bit-theme .fab,
+.retro8bit-theme .far,
+.retro8bit-theme .fal {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome", "Font Awesome 5 Free" !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* Override Tailwind's default fonts but preserve icons */
+.retro8bit-theme .font-sans:not(i),
+.retro8bit-theme .font-serif:not(i),
+.retro8bit-theme .font-mono:not(i) {
+    font-family: 'Press Start 2P', cursive !important;
+}
+
+.retro8bit-theme h1,
+.retro8bit-theme h2,
+.retro8bit-theme h3,
+.retro8bit-theme h4,
+.retro8bit-theme h5,
+.retro8bit-theme h6 {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 18px !important;
+    line-height: 1.8 !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme p,
+.retro8bit-theme span:not(i):not(.fa):not(.fas):not(.fab):not(.far):not(.fal),
+.retro8bit-theme div,
+.retro8bit-theme a {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme button {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    color: #000 !important;
+}
+
+/* Hero buttons specific styling */
+.retro8bit-theme .hero-content button,
+.retro8bit-theme .hero-content a {
+    color: #000 !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+/* Make sure button text is visible on green backgrounds */
+.retro8bit-theme a[class*="bg-orange"],
+.retro8bit-theme a[class*="bg-green"],
+.retro8bit-theme button[class*="bg-orange"],
+.retro8bit-theme button[class*="bg-green"] {
+    color: #000 !important;
+}
+
+/* Contact section email and buttons */
+.retro8bit-theme #contact a {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+.retro8bit-theme #contact button {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+.retro8bit-theme .hero-content h1 {
+    font-size: 64px !important;
+    line-height: 1.8 !important;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme #hero-name {
+    color: #22c55e !important;
+}
+
+.retro8bit-theme #hero-name span {
+    color: #eab308 !important;
+    font-size: 64px !important;
+}
+
+.retro8bit-theme nav h1 {
+    font-size: 18px !important;
+    font-family: 'Press Start 2P', cursive !important;
+}
+
+.retro8bit-theme nav a {
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme nav a:hover {
+    color: #eab308 !important;
+}
+
+.retro8bit-theme nav a.active {
+    color: #eab308 !important;
+}
+
+/* Specific overrides for section titles */
+.retro8bit-theme section h2 {
+    font-size: 24px !important;
+    font-family: 'Press Start 2P', cursive !important;
+    margin-bottom: 20px !important;
+}
+
+.retro8bit-theme .project-card h3 {
+    font-size: 14px !important;
+    font-family: 'Press Start 2P', cursive !important;
+    line-height: 1.6 !important;
+    color: #eab308 !important;
+}
+
+/* Fix project card badges visibility */
+.retro8bit-theme .project-card {
+    background-color: #1a1a1a !important;
+    border: 2px solid #22c55e !important;
+}
+
+/* Personal badge styling */
+.retro8bit-theme .project-card span[class*="bg-orange"],
+.retro8bit-theme .project-card span[class*="bg-green"] {
+    background-color: #22c55e !important;
+    color: #000 !important;
+    border: 1px solid #eab308 !important;
+    font-weight: bold !important;
+}
+
+/* Team badge styling */
+.retro8bit-theme .project-card span[class*="bg-blue"] {
+    background-color: #eab308 !important;
+    color: #000 !important;
+    border: 1px solid #22c55e !important;
+    font-weight: bold !important;
+}
+
+/* All project card badges should have black text */
+.retro8bit-theme .project-card .absolute span {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+/* Specific targeting for top-right badges */
+.retro8bit-theme .project-card div[class*="absolute"] span,
+.retro8bit-theme .project-card div[class*="top-3"] span,
+.retro8bit-theme .project-card div[class*="right-3"] span {
+    color: #000 !important;
+    font-weight: bold !important;
+    background-color: #22c55e !important;
+}
+
+/* Override any conflicting styles for badge text */
+.retro8bit-theme .project-card span[class*="text-xs"] {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+/* Super specific targeting for the exact badge structure */
+.retro8bit-theme .project-card div.absolute.top-3.right-3 {
+    color: #000 !important;
+    background-color: #22c55e !important;
+    font-weight: bold !important;
+}
+
+/* Force black text on theme-colored backgrounds */
+.retro8bit-theme .project-card div[class*="bg-orange-600"],
+.retro8bit-theme .project-card div[class*="bg-green-500"],
+.retro8bit-theme .project-card div[class*="bg-blue-600"] {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+/* Nuclear option - override ALL text in positioned badges */
+.retro8bit-theme .project-card .absolute {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+/* Ultimate override - target every possible combination */
+.retro8bit-theme .project-card div.absolute,
+.retro8bit-theme .project-card div.absolute *,
+.retro8bit-theme .project-card .absolute.top-3.right-3,
+.retro8bit-theme .project-card .absolute.top-3.right-3 *,
+.retro8bit-theme div[class*="absolute"][class*="top-3"][class*="right-3"],
+.retro8bit-theme div[class*="absolute"][class*="top-3"][class*="right-3"] * {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+/* Override Tailwind text-black class specifically */
+.retro8bit-theme .project-card .text-black {
+    color: #000 !important;
+}
+
+/* Override any green text classes */
+.retro8bit-theme .project-card .text-green-400,
+.retro8bit-theme .project-card .text-green-300,
+.retro8bit-theme .project-card .text-green-500 {
+    color: #000 !important;
+}
+
+.retro8bit-theme .project-card p {
+    font-size: 10px !important;
+    line-height: 1.6 !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme .project-card span {
+    font-size: 9px !important;
+    color: #22c55e !important;
+}
+
+/* Technology tags in project cards */
+.retro8bit-theme .project-card span[class*="px-3"] {
+    background-color: #000 !important;
+    color: #22c55e !important;
+    border: 1px solid #22c55e !important;
+}
+
+.retro8bit-theme button {
+    font-size: 11px !important;
+    padding: 12px 16px !important;
+}
+
+.retro8bit-theme .hero-content p {
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+    color: #22c55e !important;
+}
+
+.retro8bit-theme .pixelated-border {
+    border-style: solid;
+    border-width: 2px;
+    border-image: url("data:image/svg+xml,%3csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m0 0h100v100h-100z' fill='none' stroke='%2322c55e' stroke-width='2'/%3e%3c/svg%3e") 2;
+}
+
+.retro8bit-theme button,
+.retro8bit-theme .project-card,
+.retro8bit-theme .skill-item,
+.retro8bit-theme nav,
+.retro8bit-theme .theme-selector {
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px rgba(34, 197, 94, 0.3) !important;
+}
+
+.retro8bit-theme button:hover,
+.retro8bit-theme .project-card:hover {
+    box-shadow: 6px 6px 0px rgba(34, 197, 94, 0.5) !important;
+    transform: translate(-2px, -2px) !important;
+}
+
+.retro8bit-theme h1,
+.retro8bit-theme h2,
+.retro8bit-theme h3,
+.retro8bit-theme h4,
+.retro8bit-theme h5,
+.retro8bit-theme h6 {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8) !important;
+    font-family: 'Press Start 2P', cursive !important;
+}
+
+.retro8bit-theme input,
+.retro8bit-theme textarea {
+    border-radius: 0 !important;
+    border: 2px solid #22c55e !important;
+    background: #000 !important;
+    color: #22c55e !important;
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 8px !important;
+}
+
+.retro8bit-theme .hero-content {
+    animation: retro-glow 2s ease-in-out infinite alternate, pixelPulse 3s ease-in-out infinite;
+}
+
+/* Additional 8-bit animations */
+@keyframes pixelPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.02);
+        filter: brightness(1.1);
+    }
+}
+
+/* Pixelated button hover animations */
+.retro8bit-theme button:hover {
+    animation: pixelBounce 0.3s ease-out !important;
+}
+
+@keyframes pixelBounce {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-2px, -2px) scale(1.05);
+    }
+    50% {
+        transform: translate(-4px, -4px) scale(1.1);
+    }
+    75% {
+        transform: translate(-2px, -2px) scale(1.05);
+    }
+    100% {
+        transform: translate(-6px, -6px) scale(1.1);
+    }
+}
+
+/* Pixelated text animations */
+.retro8bit-theme h1,
+.retro8bit-theme h2,
+.retro8bit-theme h3 {
+    animation: textGlitch 4s ease-in-out infinite;
+}
+
+@keyframes textGlitch {
+    0%, 90%, 100% {
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    }
+    91% {
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), 4px 2px 0px rgba(34, 197, 94, 0.5);
+    }
+    92% {
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8), -2px 2px 0px rgba(234, 179, 8, 0.5);
+    }
+    93% {
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    }
+}
+
+@keyframes retro-glow {
+    from {
+        text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 15px #22c55e;
+    }
+    to {
+        text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 30px #22c55e;
+    }
+}
+
+.retro8bit-theme .canvas-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+/* Scroll Animation Classes */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Custom animations */
@@ -20,7 +549,7 @@ html {
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
@@ -31,13 +560,79 @@ html {
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(50px);
     }
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* Scroll animation variants */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+    animation: slideInFromBottom 1s ease-out forwards;
+}
+
+.animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
 
 /* Hero section animations */
 .hero-content {
@@ -49,19 +644,12 @@ html {
     transition: all 1s ease-out;
 }
 
-/* Skill items hover effect */
+/* Skill items hover effect - will be overridden by theme context */
 .skill-item {
     padding: 8px 16px;
     border-radius: 8px;
-    background-color: #f8fafc;
     border: 2px solid transparent;
     transition: all 0.3s ease;
-}
-
-.skill-item:hover {
-    background-color: #e0f2fe;
-    border-color: #0284c7;
-    transform: translateX(5px);
 }
 
 /* Custom gradient backgrounds */
@@ -71,7 +659,7 @@ html {
 
 /* Navigation active state */
 nav a.active {
-    color: #2563eb;
+    color: #ea580c;
     font-weight: 600;
 }
 
@@ -82,14 +670,14 @@ section {
 
 /* Custom button hover effects */
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #ea580c, #c2410c);
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    background: linear-gradient(135deg, #c2410c, #9a3412);
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
 }
 
 /* Card hover effects */
@@ -141,7 +729,7 @@ section {
 /* Focus states for accessibility */
 a:focus,
 button:focus {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid #ea580c;
     outline-offset: 2px;
 }
 
@@ -161,6 +749,158 @@ button:focus {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
+}
+
+/* Line clamp utility for project descriptions */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Project card animations */
+.project-card {
+    transition: all 0.3s ease;
+}
+
+/* Interests Carousel Animation */
+.interests-carousel {
+    animation: scroll-horizontal 20s linear infinite;
+    display: flex;
+    width: calc(200% + 48px); /* Double width for seamless loop */
+}
+
+.interests-carousel:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 24px));
+    }
+}
+
+/* Enhanced interest icons */
+.interest-icon {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interest-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.interest-icon:hover::before {
+    opacity: 1;
+    animation: rotate-shine 1s ease-in-out;
+}
+
+.interest-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: brightness(1.2) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes rotate-shine {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating animation for icons */
+.interest-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.interest-icon:nth-child(2n) {
+    animation-delay: -1s;
+}
+
+.interest-icon:nth-child(3n) {
+    animation-delay: -2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* 8-bit theme carousel adjustments */
+.retro8bit-theme .interests-carousel {
+    animation: scroll-horizontal-8bit 15s linear infinite;
+}
+
+.retro8bit-theme .interest-icon:hover {
+    transform: scale(1.3) !important;
+    filter: brightness(1.3) drop-shadow(0 0 20px #22c55e) !important;
+    animation: retro-pulse 0.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes retro-pulse {
+    0% {
+        box-shadow: 0 0 10px #22c55e;
+    }
+    100% {
+        box-shadow: 0 0 25px #22c55e, 0 0 35px #22c55e;
+    }
+}
+
+@keyframes scroll-horizontal-8bit {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 24px));
+    }
+}
+
+/* Theme Welcome Modal Animation */
+.animate-bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-50px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05) translateY(0);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal backdrop blur effect */
+.modal-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Print styles */

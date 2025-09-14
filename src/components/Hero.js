@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
-// Animated Dots Canvas Component
-const AnimatedDots = ({ canvasRef }) => {
+// Animated Triangles Canvas Component
+const AnimatedTriangles = ({ canvasRef, theme }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    const dots = [];
-    const maxDots = 80;
-    const maxDistance = 120;
+    const triangles = [];
+    const maxTriangles = 60;
+    const maxDistance = 150;
     let animationId;
 
     const resize = () => {
@@ -17,15 +18,17 @@ const AnimatedDots = ({ canvasRef }) => {
       canvas.height = canvas.offsetHeight;
     };
 
-    const createDots = () => {
-      dots.length = 0;
-      for (let i = 0; i < maxDots; i++) {
-        dots.push({
+    const createTriangles = () => {
+      triangles.length = 0;
+      for (let i = 0; i < maxTriangles; i++) {
+        triangles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          radius: Math.random() * 2 + 1
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 8 + 4,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 2
         });
       }
     };
@@ -33,57 +36,67 @@ const AnimatedDots = ({ canvasRef }) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update dots
-      dots.forEach(dot => {
-        dot.x += dot.vx;
-        dot.y += dot.vy;
+      // Update triangles
+      triangles.forEach(triangle => {
+        triangle.x += triangle.vx;
+        triangle.y += triangle.vy;
+        triangle.rotation += triangle.rotationSpeed;
         
         // Bounce off edges
-        if (dot.x <= 0 || dot.x >= canvas.width) dot.vx *= -1;
-        if (dot.y <= 0 || dot.y >= canvas.height) dot.vy *= -1;
+        if (triangle.x <= 0 || triangle.x >= canvas.width) triangle.vx *= -1;
+        if (triangle.y <= 0 || triangle.y >= canvas.height) triangle.vy *= -1;
         
         // Keep within bounds
-        dot.x = Math.max(0, Math.min(canvas.width, dot.x));
-        dot.y = Math.max(0, Math.min(canvas.height, dot.y));
+        triangle.x = Math.max(0, Math.min(canvas.width, triangle.x));
+        triangle.y = Math.max(0, Math.min(canvas.height, triangle.y));
       });
       
       // Draw connections
-      for (let i = 0; i < dots.length; i++) {
-        for (let j = i + 1; j < dots.length; j++) {
-          const dx = dots[i].x - dots[j].x;
-          const dy = dots[i].y - dots[j].y;
+      for (let i = 0; i < triangles.length; i++) {
+        for (let j = i + 1; j < triangles.length; j++) {
+          const dx = triangles[i].x - triangles[j].x;
+          const dy = triangles[i].y - triangles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < maxDistance) {
-            const opacity = (maxDistance - distance) / maxDistance * 0.3;
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
+            const opacity = (maxDistance - distance) / maxDistance * 0.2;
+            ctx.strokeStyle = theme.colors.canvasLines.replace('0.3', opacity.toString());
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(dots[i].x, dots[i].y);
-            ctx.lineTo(dots[j].x, dots[j].y);
+            ctx.moveTo(triangles[i].x, triangles[i].y);
+            ctx.lineTo(triangles[j].x, triangles[j].y);
             ctx.stroke();
           }
         }
       }
       
-      // Draw dots
-      dots.forEach(dot => {
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.6)';
+      // Draw triangles
+      triangles.forEach(triangle => {
+        ctx.save();
+        ctx.translate(triangle.x, triangle.y);
+        ctx.rotate((triangle.rotation * Math.PI) / 180);
+        
+        ctx.fillStyle = theme.colors.canvasDots;
         ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.moveTo(0, -triangle.size / 2);
+        ctx.lineTo(-triangle.size / 2, triangle.size / 2);
+        ctx.lineTo(triangle.size / 2, triangle.size / 2);
+        ctx.closePath();
         ctx.fill();
+        
+        ctx.restore();
       });
       
       animationId = requestAnimationFrame(animate);
     };
 
     resize();
-    createDots();
+    createTriangles();
     animate();
 
     const handleResize = () => {
       resize();
-      createDots();
+      createTriangles();
     };
 
     window.addEventListener('resize', handleResize);
@@ -100,6 +113,7 @@ const AnimatedDots = ({ canvasRef }) => {
 };
 
 const Hero = () => {
+  const { theme } = useTheme();
   const canvasRef = useRef(null);
   const heroNameRef = useRef(null);
 
@@ -129,42 +143,85 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="bg-gray-900 text-white min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Animated Dots Background */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"></canvas>
-      <AnimatedDots canvasRef={canvasRef} />
+    <section id="home" className={`${theme.colors.tertiary} ${theme.colors.textInverse} min-h-screen flex items-center pt-20 relative overflow-hidden`}>
+      {/* Animated Triangles Background */}
+      <div className="canvas-container absolute inset-0 w-full h-full">
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"></canvas>
+        <AnimatedTriangles canvasRef={canvasRef} theme={theme} />
+      </div>
       
-      <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-        <div className="hero-content">
-          <h1 
-            ref={heroNameRef}
-            id="hero-name" 
-            className="text-5xl md:text-7xl font-bold mb-6 opacity-0 transform translate-y-20"
-          >
-            Hi, I'm <span className="text-blue-400">Jullian</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Computer Science Student & Passionate Creator
-          </p>
-          <p className="text-lg mb-12 max-w-4xl mx-auto opacity-90">
-            I have a deep passion for creation, whether in software, hardware, robotics, or building websites. 
-            My curiosity fuels my drive to explore, build, and innovate.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#about" 
-              className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300"
-              onClick={(e) => handleNavClick(e, 'about')}
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          {/* Left side - Text content */}
+          <div className="hero-content text-left">
+            <h1 
+              ref={heroNameRef}
+              id="hero-name" 
+              className="text-4xl md:text-7xl font-bold mb-6 opacity-0 transform translate-y-20"
             >
-              Learn More About Me
-            </a>
-            <a 
-              href="#contact" 
-              className="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-full font-semibold hover:bg-blue-400 hover:text-white transition duration-300"
-              onClick={(e) => handleNavClick(e, 'contact')}
-            >
-              Get In Touch
-            </a>
+              Hi, I'm <span className={theme.colors.brand}>Jullian</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-6">
+              Computer Science Student & Passionate Creator
+            </p>
+            <p className="text-lg mb-8 opacity-90 leading-relaxed">
+              I have a deep passion for creation, whether in software, hardware, robotics, or building websites. 
+              My curiosity fuels my drive to explore, build, and innovate.
+            </p>
+            <div className="flex flex-row gap-4 justify-start">
+              <a 
+                href="#projects" 
+                className={`${theme.colors.brandBg} ${theme.colors.textInverse} px-6 py-3 rounded-full font-semibold ${theme.colors.brandHover} transition duration-300 text-center whitespace-nowrap`}
+                onClick={(e) => handleNavClick(e, 'projects')}
+              >
+                View Projects
+              </a>
+              <a
+                href="/cv/Jullian_Bilan_CV.pdf"
+                download="Jullian_Bilan_CV.pdf"
+                className={`flex items-center justify-center gap-2 border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-6 py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 whitespace-nowrap`}
+              >
+                <i className="fas fa-download text-sm"></i>
+                Download CV
+              </a>
+              <a 
+                href="#contact" 
+                className={`border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-6 py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 text-center whitespace-nowrap`}
+                onClick={(e) => handleNavClick(e, 'contact')}
+              >
+                Get In Touch
+              </a>
+            </div>
+          </div>
+
+          {/* Right side - Profile image */}
+          <div className="flex justify-center md:justify-end">
+            <div className="relative">
+              <div className={`w-80 h-80 rounded-full overflow-hidden shadow-2xl border-4 ${theme.colors.brandBorder}`}>
+                <img 
+                  src="/images/profile-photo.jpg" 
+                  alt="Jullian Bilan"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback if image doesn't exist
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                {/* Fallback placeholder */}
+                <div className={`w-full h-full bg-gradient-to-br ${theme.colors.gradientFrom} ${theme.colors.gradientTo} flex items-center justify-center`} style={{display: 'none'}}>
+                  <div className="text-center">
+                    <i className={`fas fa-user text-6xl ${theme.colors.brand} mb-4`}></i>
+                    <p className={`text-sm ${theme.colors.textSecondary}`}>Add your photo to</p>
+                    <p className={`text-sm ${theme.colors.textSecondary}`}>public/images/profile-photo.jpg</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className={`absolute -top-4 -right-4 w-8 h-8 ${theme.colors.brandBg} rounded-full opacity-80`}></div>
+              <div className={`absolute -bottom-4 -left-4 w-6 h-6 ${theme.colors.accentBg} rounded-full opacity-60`}></div>
+            </div>
           </div>
         </div>
       </div>

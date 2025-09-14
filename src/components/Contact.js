@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const ContactButton = ({ href, icon, text, bgColor, hoverColor, target }) => {
   const buttonRef = useRef(null);
@@ -40,6 +41,7 @@ const ContactButton = ({ href, icon, text, bgColor, hoverColor, target }) => {
 };
 
 const Contact = () => {
+  const { theme } = useTheme();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -76,12 +78,12 @@ const Contact = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 bg-gray-900 text-white">
+    <section ref={sectionRef} id="contact" className={`py-20 ${theme.colors.tertiary} ${theme.colors.textInverse}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <div className={`w-20 h-1 ${theme.colors.brandBg} mx-auto mb-8`}></div>
+          <p className={`text-xl ${theme.colors.textMuted} max-w-2xl mx-auto`}>
             I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
           </p>
         </div>
@@ -90,15 +92,15 @@ const Contact = () => {
             href="mailto:jullianbilan20@gmail.com"
             icon="fas fa-envelope"
             text="jullianbilan20@gmail.com"
-            bgColor="bg-blue-600"
-            hoverColor="hover:bg-blue-700"
+            bgColor={theme.colors.brandBg}
+            hoverColor={theme.colors.brandHover}
           />
           <ContactButton
             href="https://github.com/hul20"
             icon="fab fa-github"
             text="GitHub Profile"
-            bgColor="bg-gray-800"
-            hoverColor="hover:bg-gray-700"
+            bgColor={theme.colors.accentBg}
+            hoverColor={theme.colors.accentHover}
             target="_blank"
           />
         </div>

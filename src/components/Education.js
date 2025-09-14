@@ -1,7 +1,15 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Education = () => {
+  const { theme } = useTheme();
   const sectionRef = useRef(null);
+  
+  // Scroll animations
+  const headerRef = useScrollAnimation('fade-in-up');
+  const degreeRef = useScrollAnimation('fade-in-left');
+  const scholarshipRef = useScrollAnimation('fade-in-right');
 
   useEffect(() => {
     const observerOptions = {
@@ -37,24 +45,45 @@ const Education = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="education" className="py-20 bg-white">
+    <section ref={sectionRef} id="education" className={`py-20 ${theme.colors.secondary}`}>
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Education</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <div ref={headerRef} className="text-center mb-16">
+          <h2 className={`text-4xl font-bold ${theme.colors.textPrimary} mb-4`}>Education</h2>
+          <div className={`w-20 h-1 ${theme.colors.brandBg} mx-auto`}></div>
         </div>
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 shadow-lg">
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Degree Information */}
+          <div ref={degreeRef} className={`bg-gradient-to-r ${theme.colors.gradientFrom} ${theme.colors.gradientTo} rounded-lg p-8 shadow-lg`}>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
               <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className={`w-20 h-20 ${theme.colors.brandBg} rounded-full flex items-center justify-center`}>
                   <i className="fas fa-graduation-cap text-white text-2xl"></i>
                 </div>
               </div>
               <div className="text-center md:text-left">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">Bachelor of Science in Computer Science</h3>
-                <p className="text-xl text-blue-600 font-medium mb-2">West Visayas State University</p>
-                <p className="text-gray-600 text-lg">Expected Graduation: 2027</p>
+                <h3 className={`text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>Bachelor of Science in Computer Science</h3>
+                <p className={`text-lg ${theme.colors.accent} font-medium mb-2`}>Major in Artificial Intelligence</p>
+                <p className={`text-xl ${theme.colors.brand} font-medium mb-2`}>West Visayas State University</p>
+                <p className={`${theme.colors.textSecondary} text-lg`}>Expected Graduation: 2027</p>
+              </div>
+            </div>
+          </div>
+
+          {/* DOST Scholarship */}
+          <div ref={scholarshipRef} className={`bg-gradient-to-r ${theme.colors.gradientSecondary} rounded-lg p-8 shadow-lg`}>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className={`w-20 h-20 ${theme.colors.accentBg} rounded-full flex items-center justify-center`}>
+                  <i className="fas fa-award text-white text-2xl"></i>
+                </div>
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className={`text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>DOST Undergraduate Scholar</h3>
+                <p className={`text-xl ${theme.colors.accent} font-medium mb-2`}>Department of Science and Technology</p>
+                <p className={`${theme.colors.textSecondary} text-lg mb-2`}>Batch 2023 • RA 7687</p>
+                <p className={`${theme.colors.textSecondary} text-sm leading-relaxed`}>
+                  Merit-based scholarship program supporting students in Science, Technology, Engineering, and Mathematics (STEM) fields to develop the country's scientific and technological capabilities.
+                </p>
               </div>
             </div>
           </div>
