@@ -29,7 +29,7 @@ const SkillItem = ({ skill, theme }) => {
   return (
     <div 
       ref={itemRef} 
-      className={`skill-item ${theme.colors.skillBg} ${theme.colors.skillHover} ${theme.colors.skillBorder}`}
+      className={`skill-item ${theme.colors.skillBg} ${theme.colors.skillHover} ${theme.colors.skillBorder} text-sm sm:text-base`}
     >
       <span className={theme.colors.textSecondary}>{skill}</span>
     </div>
@@ -123,14 +123,14 @@ const Skills = () => {
           <h2 className={`text-4xl font-bold ${theme.colors.textPrimary} mb-4`}>Skills & Technologies</h2>
           <div className={`w-20 h-1 ${theme.colors.brandBg} mx-auto`}></div>
         </div>
-        <div ref={gridRef} className="grid md:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {skillCategories.map((category, index) => (
-            <div key={index} className={`${theme.colors.secondary} rounded-lg p-8 shadow-lg hover:shadow-xl transition duration-300`}>
-              <div className="text-center mb-6">
-                <i className={`${category.icon} text-4xl ${category.iconColor} mb-4`}></i>
-                <h3 className={`text-xl font-semibold ${theme.colors.textPrimary}`}>{category.title}</h3>
+            <div key={index} className={`${theme.colors.secondary} rounded-lg p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition duration-300`}>
+              <div className="text-center mb-4 sm:mb-6">
+                <i className={`${category.icon} text-3xl sm:text-4xl ${category.iconColor} mb-3 sm:mb-4`}></i>
+                <h3 className={`text-lg sm:text-xl font-semibold ${theme.colors.textPrimary}`}>{category.title}</h3>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <SkillItem key={skillIndex} skill={skill} theme={theme} />
                 ))}

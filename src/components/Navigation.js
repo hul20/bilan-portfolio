@@ -87,9 +87,9 @@ const Navigation = () => {
   return (
     <nav className={`${theme.colors.secondary} shadow-lg fixed w-full top-0 z-50`}>
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3 sm:py-4">
           <div className="flex items-center space-x-4">
-            <h1 className={`text-2xl font-bold ${theme.colors.brand}`}>hulyan</h1>
+            <h1 className={`text-xl sm:text-2xl font-bold ${theme.colors.brand}`}>hulyan</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
@@ -115,37 +115,42 @@ const Navigation = () => {
             </a>
             <ThemeSelector />
           </div>
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-3">
             <ThemeSelector />
             <button 
               onClick={toggleMobileMenu}
-              className={`${theme.colors.textPrimary} ${theme.colors.hover}`}
+              className={`p-2 rounded-md ${theme.colors.textPrimary} ${theme.colors.hover} transition-colors duration-200`}
+              aria-label="Toggle mobile menu"
             >
-              <i className="fas fa-bars text-xl"></i>
+              <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-lg`}></i>
             </button>
           </div>
         </div>
         {/* Mobile Menu */}
-        <div className={`md:hidden pb-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-          {navItems.map((item) => (
+        <div className={`md:hidden pb-4 ${isMobileMenuOpen ? 'block animate-fade-in' : 'hidden'}`}>
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`block py-3 px-2 ${theme.colors.textPrimary} ${theme.colors.hover} transition duration-300 rounded-md ${
+                  activeSection === item.href.substring(1) ? `${theme.colors.brandBg} ${theme.colors.textInverse}` : ''
+                }`}
+                onClick={(e) => handleNavClick(e, item.href.substring(1))}
+              >
+                {item.label}
+              </a>
+            ))}
             <a
-              key={item.href}
-              href={item.href}
-              className={`block py-2 ${theme.colors.textPrimary} ${theme.colors.hover} transition duration-300`}
-              onClick={(e) => handleNavClick(e, item.href.substring(1))}
+              href="/cv/Jullian_Bilan_CV.pdf"
+              download="Jullian_Bilan_CV.pdf"
+              className={`flex items-center gap-2 py-3 px-2 mt-2 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-md font-semibold ${theme.colors.brandHover} transition duration-300`}
+              onClick={() => playSound('success')}
             >
-              {item.label}
+              <i className="fas fa-download text-sm"></i>
+              Download CV
             </a>
-          ))}
-          <a
-            href="/cv/Jullian_Bilan_CV.pdf"
-            download="Jullian_Bilan_CV.pdf"
-            className={`flex items-center gap-2 py-2 ${theme.colors.brand} ${theme.colors.hover} transition duration-300 font-semibold`}
-            onClick={() => playSound('success')}
-          >
-            <i className="fas fa-download text-sm"></i>
-            Download CV
-          </a>
+          </div>
         </div>
       </div>
     </nav>

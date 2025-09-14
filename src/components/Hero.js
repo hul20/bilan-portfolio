@@ -157,21 +157,21 @@ const Hero = () => {
             <h1 
               ref={heroNameRef}
               id="hero-name" 
-              className="text-4xl md:text-7xl font-bold mb-6 opacity-0 transform translate-y-20"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 opacity-0 transform translate-y-20"
             >
               Hi, I'm <span className={theme.colors.brand}>Jullian</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-6">
+            <p className="text-lg sm:text-xl md:text-2xl mb-4 md:mb-6">
               Computer Science Student & Passionate Creator
             </p>
-            <p className="text-lg mb-8 opacity-90 leading-relaxed">
+            <p className="text-base md:text-lg mb-6 md:mb-8 opacity-90 leading-relaxed">
               I have a deep passion for creation, whether in software, hardware, robotics, or building websites. 
               My curiosity fuels my drive to explore, build, and innovate.
             </p>
-            <div className="flex flex-row gap-4 justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
               <a 
                 href="#projects" 
-                className={`${theme.colors.brandBg} ${theme.colors.textInverse} px-6 py-3 rounded-full font-semibold ${theme.colors.brandHover} transition duration-300 text-center whitespace-nowrap`}
+                className={`${theme.colors.brandBg} ${theme.colors.textInverse} px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold ${theme.colors.brandHover} transition duration-300 text-center text-sm sm:text-base`}
                 onClick={(e) => handleNavClick(e, 'projects')}
               >
                 View Projects
@@ -179,17 +179,19 @@ const Hero = () => {
               <a
                 href="/cv/Jullian_Bilan_CV.pdf"
                 download="Jullian_Bilan_CV.pdf"
-                className={`flex items-center justify-center gap-2 border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-6 py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 whitespace-nowrap`}
+                className={`flex items-center justify-center gap-2 border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 text-sm sm:text-base`}
               >
                 <i className="fas fa-download text-sm"></i>
-                Download CV
+                <span className="hidden sm:inline">Download CV</span>
+                <span className="sm:hidden">CV</span>
               </a>
               <a 
                 href="#contact" 
-                className={`border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-6 py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 text-center whitespace-nowrap`}
+                className={`border-2 ${theme.colors.accentBorder} ${theme.colors.accent} px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold ${theme.colors.accentHover} hover:text-white transition duration-300 text-center text-sm sm:text-base`}
                 onClick={(e) => handleNavClick(e, 'contact')}
               >
-                Get In Touch
+                <span className="hidden sm:inline">Get In Touch</span>
+                <span className="sm:hidden">Contact</span>
               </a>
             </div>
           </div>
@@ -197,7 +199,7 @@ const Hero = () => {
           {/* Right side - Profile image */}
           <div className="flex justify-center md:justify-end">
             <div className="relative">
-              <div className={`w-80 h-80 rounded-full overflow-hidden shadow-2xl border-4 ${theme.colors.brandBorder}`}>
+              <div className={`w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl border-4 ${theme.colors.brandBorder}`}>
                 <img 
                   src="/images/profile-photo.jpg" 
                   alt="Jullian Bilan"

@@ -53,35 +53,35 @@ const Education = () => {
         </div>
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Degree Information */}
-          <div ref={degreeRef} className={`bg-gradient-to-r ${theme.colors.gradientFrom} ${theme.colors.gradientTo} rounded-lg p-8 shadow-lg`}>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <div ref={degreeRef} className={`bg-gradient-to-r ${theme.colors.gradientFrom} ${theme.colors.gradientTo} rounded-lg p-4 sm:p-6 md:p-8 shadow-lg`}>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6">
               <div className="flex-shrink-0">
-                <div className={`w-20 h-20 ${theme.colors.brandBg} rounded-full flex items-center justify-center`}>
-                  <i className="fas fa-graduation-cap text-white text-2xl"></i>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 ${theme.colors.brandBg} rounded-full flex items-center justify-center`}>
+                  <i className="fas fa-graduation-cap text-white text-xl sm:text-2xl"></i>
                 </div>
               </div>
               <div className="text-center md:text-left">
-                <h3 className={`text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>Bachelor of Science in Computer Science</h3>
-                <p className={`text-lg ${theme.colors.accent} font-medium mb-2`}>Major in Artificial Intelligence</p>
-                <p className={`text-xl ${theme.colors.brand} font-medium mb-2`}>West Visayas State University</p>
-                <p className={`${theme.colors.textSecondary} text-lg`}>Expected Graduation: 2027</p>
+                <h3 className={`text-lg sm:text-xl md:text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>Bachelor of Science in Computer Science</h3>
+                <p className={`text-base sm:text-lg ${theme.colors.accent} font-medium mb-2`}>Major in Artificial Intelligence</p>
+                <p className={`text-lg sm:text-xl ${theme.colors.brand} font-medium mb-2`}>West Visayas State University</p>
+                <p className={`${theme.colors.textSecondary} text-base sm:text-lg`}>Expected Graduation: 2027</p>
               </div>
             </div>
           </div>
 
           {/* DOST Scholarship */}
-          <div ref={scholarshipRef} className={`bg-gradient-to-r ${theme.colors.gradientSecondary} rounded-lg p-8 shadow-lg`}>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <div ref={scholarshipRef} className={`bg-gradient-to-r ${theme.colors.gradientSecondary} rounded-lg p-4 sm:p-6 md:p-8 shadow-lg`}>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6">
               <div className="flex-shrink-0">
-                <div className={`w-20 h-20 ${theme.colors.accentBg} rounded-full flex items-center justify-center`}>
-                  <i className="fas fa-award text-white text-2xl"></i>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 ${theme.colors.accentBg} rounded-full flex items-center justify-center`}>
+                  <i className="fas fa-award text-white text-xl sm:text-2xl"></i>
                 </div>
               </div>
               <div className="text-center md:text-left">
-                <h3 className={`text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>DOST Undergraduate Scholar</h3>
-                <p className={`text-xl ${theme.colors.accent} font-medium mb-2`}>Department of Science and Technology</p>
-                <p className={`${theme.colors.textSecondary} text-lg mb-2`}>Batch 2023 • RA 7687</p>
-                <p className={`${theme.colors.textSecondary} text-sm leading-relaxed`}>
+                <h3 className={`text-lg sm:text-xl md:text-2xl font-semibold ${theme.colors.textPrimary} mb-2`}>DOST Undergraduate Scholar</h3>
+                <p className={`text-lg sm:text-xl ${theme.colors.accent} font-medium mb-2`}>Department of Science and Technology</p>
+                <p className={`${theme.colors.textSecondary} text-base sm:text-lg mb-2`}>Batch 2023 • RA 7687</p>
+                <p className={`${theme.colors.textSecondary} text-sm sm:text-base leading-relaxed`}>
                   Merit-based scholarship program supporting students in Science, Technology, Engineering, and Mathematics (STEM) fields to develop the country's scientific and technological capabilities.
                 </p>
               </div>

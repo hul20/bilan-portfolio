@@ -6,7 +6,7 @@ const ProjectCard = ({ project, theme }) => {
   return (
     <div className={`${theme.colors.secondary} rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105 hover:-translate-y-2 group`}>
       {/* Project Image - 2/3 height */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
         {project.image ? (
           <img 
             src={project.image} 
@@ -42,21 +42,21 @@ const ProjectCard = ({ project, theme }) => {
       </div>
 
       {/* Project Content */}
-      <div className="p-6 flex flex-col">
-        <h3 className={`text-xl font-bold ${theme.colors.textPrimary} mb-3 group-hover:${theme.colors.brand} transition-colors duration-300`}>
+      <div className="p-4 sm:p-6 flex flex-col">
+        <h3 className={`text-lg sm:text-xl font-bold ${theme.colors.textPrimary} mb-2 sm:mb-3 group-hover:${theme.colors.brand} transition-colors duration-300`}>
           {project.title}
         </h3>
-        <p className={`${theme.colors.textSecondary} text-sm leading-relaxed mb-4`}>
+        <p className={`${theme.colors.textSecondary} text-sm leading-relaxed mb-3 sm:mb-4`}>
           {project.description}
         </p>
 
         {/* Technologies */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2">
+        <div className="mb-3 sm:mb-4">
+          <div className="flex flex-wrap gap-1 sm:gap-2">
             {project.technologies?.slice(0, 4).map((tech, index) => (
               <span 
                 key={index}
-                className={`px-3 py-1 text-xs rounded-full ${theme.colors.skillBg} ${theme.colors.textSecondary} border ${theme.colors.brandBorder} hover:${theme.colors.brandBg} hover:${theme.colors.textInverse} transition-all duration-300 font-medium`}
+                className={`px-2 sm:px-3 py-1 text-xs rounded-full ${theme.colors.skillBg} ${theme.colors.textSecondary} border ${theme.colors.brandBorder} hover:${theme.colors.brandBg} hover:${theme.colors.textInverse} transition-all duration-300 font-medium`}
               >
                 {tech}
               </span>
@@ -65,13 +65,13 @@ const ProjectCard = ({ project, theme }) => {
         </div>
 
         {/* Project Links */}
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${theme.colors.brandBg} ${theme.colors.textInverse} ${theme.colors.brandHover} transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105`}
+              className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-lg ${theme.colors.brandBg} ${theme.colors.textInverse} ${theme.colors.brandHover} transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105`}
             >
               <i className="fab fa-github text-base"></i>
               Code
@@ -82,7 +82,7 @@ const ProjectCard = ({ project, theme }) => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 ${theme.colors.accentBorder} ${theme.colors.accent} ${theme.colors.accentHover} hover:text-white transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105`}
+              className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-lg border-2 ${theme.colors.accentBorder} ${theme.colors.accent} ${theme.colors.accentHover} hover:text-white transition-all duration-300 text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105`}
             >
               <i className="fas fa-external-link-alt text-base"></i>
               Demo
@@ -191,21 +191,22 @@ const Projects = () => {
         </div>
 
         {/* Filter Buttons */}
-        <div ref={filtersRef} className="flex justify-center gap-4 mb-8">
+        <div ref={filtersRef} className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveFilter('all')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
               activeFilter === 'all'
                 ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
                 : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
             }`}
           >
             <i className="fas fa-th text-sm"></i>
-            All Projects
+            <span className="hidden sm:inline">All Projects</span>
+            <span className="sm:hidden">All</span>
           </button>
           <button
             onClick={() => setActiveFilter('software')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
               activeFilter === 'software'
                 ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
                 : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
@@ -216,7 +217,7 @@ const Projects = () => {
           </button>
           <button
             onClick={() => setActiveFilter('hardware')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
               activeFilter === 'hardware'
                 ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
                 : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
@@ -228,7 +229,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
           {filteredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} theme={theme} />
           ))}
