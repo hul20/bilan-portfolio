@@ -30,18 +30,22 @@ I have a deep passion for creation, whether in software, hardware, robotics, or 
 
 ## 🎓 Education Timeline
 
-- **West Visayas State University** (Current)
+- **West Visayas State University** (2023-Present)
 
   - Bachelor of Science in Computer Science
   - Major in Artificial Intelligence
   - Expected Graduation: 2027
+  - Current: 2nd Year Student
 
 - **College of St. John Roxas** (2021-2023)
 
-  - Senior High School
+  - Senior High School (Grades 11-12)
+  - Successfully completed Senior High School education
 
 - **Capiz State University** (2017-2021)
-  - High School
+
+  - Junior High School (Grades 7-10)
+  - Foundation in mathematics, science, and technology
 
 ## 🛠️ Tech Stack & Skills
 

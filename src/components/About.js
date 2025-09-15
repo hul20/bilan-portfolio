@@ -73,6 +73,19 @@ const About = () => {
           </div>
           <div ref={textRef}>
             <h3 className={`text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 ${theme.colors.textPrimary}`}>Hello! I'm Jullian</h3>
+            
+            {/* Personal Information */}
+            <div className="mb-4 sm:mb-6 flex flex-wrap gap-4 sm:gap-6">
+              <div className={`flex items-center gap-2 ${theme.colors.textSecondary} text-sm sm:text-base`}>
+                <i className="fas fa-map-marker-alt text-base sm:text-lg"></i>
+                <span>Iloilo City</span>
+              </div>
+              <div className={`flex items-center gap-2 ${theme.colors.textSecondary} text-sm sm:text-base`}>
+                <i className="fas fa-birthday-cake text-base sm:text-lg"></i>
+                <span>July 20, 2004</span>
+              </div>
+            </div>
+            
             <p className={`${theme.colors.textSecondary} text-base sm:text-lg leading-relaxed mb-4 sm:mb-6`}>
               A Computer Science student at West Visayas State University with a deep passion for creation, 
               whether in software, hardware, robotics, or building websites. My curiosity fuels this drive 
