@@ -95,27 +95,27 @@ const About = () => {
             My Interests & Hobbies
           </h4>
           <div ref={interestsRef} className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center">
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-running text-base sm:text-xl"></i>
               Running
             </span>
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-mountain text-base sm:text-xl"></i>
               Hiking
             </span>
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-biking text-base sm:text-xl"></i>
               MTB
             </span>
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-palette text-base sm:text-xl"></i>
               Watercolor
             </span>
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-futbol text-base sm:text-xl"></i>
               Football
             </span>
-            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+            <span className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-4 glass-badge rounded-full text-sm sm:text-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-110`}>
               <i className="fas fa-flag-checkered text-base sm:text-xl"></i>
               Motorsports
             </span>

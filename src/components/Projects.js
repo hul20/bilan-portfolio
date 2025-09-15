@@ -4,7 +4,7 @@ import { useScrollAnimation, useStaggeredScrollAnimation } from '../hooks/useScr
 
 const ProjectCard = ({ project, theme }) => {
   return (
-    <div className={`${theme.colors.secondary} rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105 hover:-translate-y-2 group`}>
+    <div className={`glass-card rounded-lg overflow-hidden transform hover:scale-105 hover:-translate-y-2 group`}>
       {/* Project Image - 2/3 height */}
       <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
         {project.image ? (
@@ -32,10 +32,10 @@ const ProjectCard = ({ project, theme }) => {
         </div>
         
         {/* Project Type Badge */}
-        <div className={`absolute top-3 right-3 px-2 py-1 text-xs rounded ${
+        <div className={`absolute top-3 right-3 px-2 py-1 text-xs rounded glass-badge text-black font-medium ${
           project.category === 'software' 
-            ? `${theme.colors.brandBg} ${theme.colors.textInverse}` 
-            : `${theme.colors.accentBg} ${theme.colors.textInverse}`
+            ? 'border-blue-400/30' 
+            : 'border-green-400/30'
         }`}>
           {project.category === 'software' ? 'Software' : 'Hardware'}
         </div>
@@ -109,7 +109,7 @@ const Projects = () => {
     {
       id: 1,
       title: "GabayAni",
-      description: "AI-powered agricultural assistant for Filipino rice farmers with real-time guidance.",
+      description: "AI-powered agricultural assistant accesible via Facebook Messenger & SMS for Filipino rice farmers with real-time guidance.",
       category: "software",
       technologies: ["AI/ML", "Google Gemini", "Langchain", "Facebook API"],
       icon: "fas fa-seedling",
@@ -128,6 +128,16 @@ const Projects = () => {
     },
     {
       id: 3,
+      title: "Route-Route-anay",
+      description: "A Algorithm-Based Map Navigation System that uses the A* algorithm to optimize commute routes via local jeepney paths, factoring in both jeepney travel and walking distances to and from public utility vehicle routes.",
+      category: "software",
+      technologies: ["A* Algorithm", "Python", "OpenStreetMap", "Route Optimization"],
+      icon: "fas fa-route",
+      image: "/images/projects/route.jpg",
+      githubUrl: "https://github.com/hul20/route-route-anay"
+    },
+    {
+      id: 4,
       title: "Taklad-Sais",
       description: "A hiking platform for users to share experiences and discover new trails in Region 6.",
       category: "software",
@@ -138,7 +148,7 @@ const Projects = () => {
       liveUrl: "https://bilan-finalproject.netlify.app/"
     },
     {
-      id: 4,
+      id: 5,
       title: "ClackyBara",
       description: "An e-commerce mechanical keyboard store for enthusiasts and hobbyists.",
       category: "software",
@@ -151,7 +161,7 @@ const Projects = () => {
     
     // Hardware Projects
     {
-      id: 5,
+      id: 6,
       title: "JAPJAP Drone Services",
       description: "ESP32-based air quality monitoring drone with temperature, humidity, and gas sensors.",
       category: "hardware",
@@ -161,7 +171,7 @@ const Projects = () => {
       githubUrl: "https://github.com/hul20/japjap-drone"
     },
     {
-      id: 6,
+      id: 7,
       title: "FairFare",
       description: "Arduino-based tricycle fare meter for Roxas City with GPS and GSM communication.",
       category: "hardware",
@@ -194,10 +204,10 @@ const Projects = () => {
         <div ref={filtersRef} className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveFilter('all')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
               activeFilter === 'all'
-                ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
-                : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
+                ? `glass-button ${theme.colors.textInverse}`
+                : `glass-card ${theme.colors.textPrimary} hover:${theme.colors.textInverse}`
             }`}
           >
             <i className="fas fa-th text-sm"></i>
@@ -206,10 +216,10 @@ const Projects = () => {
           </button>
           <button
             onClick={() => setActiveFilter('software')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
               activeFilter === 'software'
-                ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
-                : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
+                ? `glass-button ${theme.colors.textInverse}`
+                : `glass-card ${theme.colors.textPrimary} hover:${theme.colors.textInverse}`
             }`}
           >
             <i className="fas fa-code text-sm"></i>
@@ -217,10 +227,10 @@ const Projects = () => {
           </button>
           <button
             onClick={() => setActiveFilter('hardware')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base ${
               activeFilter === 'hardware'
-                ? `${theme.colors.brandBg} ${theme.colors.textInverse}`
-                : `${theme.colors.secondary} ${theme.colors.textPrimary} ${theme.colors.hover}`
+                ? `glass-button ${theme.colors.textInverse}`
+                : `glass-card ${theme.colors.textPrimary} hover:${theme.colors.textInverse}`
             }`}
           >
             <i className="fas fa-microchip text-sm"></i>

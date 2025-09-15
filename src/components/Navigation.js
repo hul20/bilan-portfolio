@@ -85,7 +85,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`${theme.colors.secondary} shadow-lg fixed w-full top-0 z-50`}>
+    <nav className={`glass-nav fixed w-full top-0 z-50 transition-all duration-300`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-3 sm:py-4">
           <div className="flex items-center space-x-4">
@@ -107,7 +107,7 @@ const Navigation = () => {
             <a
               href="/cv/Jullian_Bilan_CV.pdf"
               download="Jullian_Bilan_CV.pdf"
-              className={`flex items-center gap-2 px-4 py-2 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-lg font-semibold ${theme.colors.brandHover} transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg`}
+              className={`flex items-center gap-2 px-4 py-2 glass-button rounded-lg font-semibold ${theme.colors.textPrimary} transition-all duration-300 hover:scale-105`}
               onClick={() => playSound('success')}
             >
               <i className="fas fa-download text-sm"></i>
@@ -144,7 +144,7 @@ const Navigation = () => {
             <a
               href="/cv/Jullian_Bilan_CV.pdf"
               download="Jullian_Bilan_CV.pdf"
-              className={`flex items-center gap-2 py-3 px-2 mt-2 ${theme.colors.brandBg} ${theme.colors.textInverse} rounded-md font-semibold ${theme.colors.brandHover} transition duration-300`}
+              className={`flex items-center gap-2 py-3 px-2 mt-2 glass-button rounded-md font-semibold ${theme.colors.textPrimary} transition duration-300`}
               onClick={() => playSound('success')}
             >
               <i className="fas fa-download text-sm"></i>

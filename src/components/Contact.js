@@ -32,7 +32,7 @@ const ContactButton = ({ href, icon, text, bgColor, hoverColor, target }) => {
       ref={buttonRef}
       href={href} 
       target={target}
-      className={`flex items-center justify-center gap-3 sm:gap-4 ${bgColor} ${hoverColor} px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg transition duration-300 w-full sm:w-auto`}
+      className={`flex items-center justify-center gap-3 sm:gap-4 glass-button px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 w-full sm:w-auto text-white hover:scale-105`}
     >
       <i className={`${icon} text-lg sm:text-xl`}></i>
       <span className="text-sm sm:text-base md:text-lg font-medium truncate">{text}</span>

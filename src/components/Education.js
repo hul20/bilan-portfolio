@@ -53,7 +53,7 @@ const Education = () => {
         </div>
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Degree Information */}
-          <div ref={degreeRef} className={`bg-gradient-to-r ${theme.colors.gradientFrom} ${theme.colors.gradientTo} rounded-lg p-4 sm:p-6 md:p-8 shadow-lg`}>
+          <div ref={degreeRef} className={`glass-card rounded-lg p-4 sm:p-6 md:p-8`}>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6">
               <div className="flex-shrink-0">
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${theme.colors.brandBg} rounded-full flex items-center justify-center`}>
@@ -70,7 +70,7 @@ const Education = () => {
           </div>
 
           {/* DOST Scholarship */}
-          <div ref={scholarshipRef} className={`bg-gradient-to-r ${theme.colors.gradientSecondary} rounded-lg p-4 sm:p-6 md:p-8 shadow-lg`}>
+          <div ref={scholarshipRef} className={`glass-card rounded-lg p-4 sm:p-6 md:p-8`}>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6">
               <div className="flex-shrink-0">
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${theme.colors.accentBg} rounded-full flex items-center justify-center`}>
